@@ -5,7 +5,7 @@ import { profile } from '../data.js'
 const navItems = [
   { label: '首页', to: '/' },
   { label: '论文', to: '/papers' },
-  { label: '项目', to: '/projects' },
+  { label: '实习', to: '/internships' },
   { label: '博客', to: '/blog' },
 ]
 

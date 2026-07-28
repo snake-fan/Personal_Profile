@@ -216,6 +216,27 @@ a {
   color: var(--ink);
 }
 
+.about {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) 2fr;
+  gap: clamp(2rem, 8vw, 8rem);
+  padding: 8rem 0;
+  border-top: 1px solid var(--ink);
+}
+
+.about-heading h2 {
+  margin: 1rem 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+
+.about-copy {
+  align-self: start;
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+}
+
 .section-list {
   padding: 8rem 0;
   border-top: 1px solid var(--ink);
@@ -456,6 +477,12 @@ a {
   line-height: 1.5;
 }
 
+.paper-description {
+  max-width: 48rem;
+  margin-top: 1.5rem;
+  color: var(--muted);
+}
+
 .tag-list,
 .project-stack {
   display: flex;
@@ -549,6 +576,44 @@ a {
   align-items: center;
 }
 
+.internship-item {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) 4fr;
+  gap: 2rem;
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.internship-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--muted);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.internship-main h2 {
+  margin: 0.8rem 0 1.25rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.internship-summary {
+  max-width: 45rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.internship-body {
+  max-width: 48rem;
+  margin-top: 2rem;
+}
+
 .post-item {
   position: relative;
   display: grid;
@@ -602,6 +667,113 @@ a {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 12rem;
   line-height: 1;
+}
+
+.article-page {
+  min-height: calc(100vh - 207px);
+  padding-bottom: 9rem;
+}
+
+.article-header {
+  padding: 2rem 0 5rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+.article-header h1 {
+  max-width: 1100px;
+  margin: 1.5rem 0 3rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.article-meta {
+  display: flex;
+  gap: 1.5rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.article-body {
+  width: min(760px, 100%);
+  margin: 5rem auto 0;
+  font-size: 1.05rem;
+}
+
+.markdown-content {
+  line-height: 1.85;
+}
+
+.markdown-content > :first-child {
+  margin-top: 0;
+}
+
+.markdown-content > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown-content p,
+.markdown-content ul,
+.markdown-content ol,
+.markdown-content blockquote {
+  margin: 0 0 1.35rem;
+}
+
+.markdown-content h2,
+.markdown-content h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+.markdown-content h2 {
+  margin: 3.5rem 0 1.25rem;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+}
+
+.markdown-content h3 {
+  margin: 2.5rem 0 1rem;
+  font-size: 1.5rem;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  padding-left: 1.25rem;
+}
+
+.markdown-content li + li {
+  margin-top: 0.55rem;
+}
+
+.markdown-content a {
+  color: var(--blue);
+  border-bottom: 1px solid currentColor;
+}
+
+.markdown-content blockquote {
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--orange);
+  color: var(--muted);
+}
+
+.markdown-content code {
+  padding: 0.12rem 0.3rem;
+  background: rgba(28, 33, 30, 0.07);
+  font-size: 0.9em;
+}
+
+.markdown-content pre {
+  padding: 1.25rem;
+  overflow-x: auto;
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.markdown-content pre code {
+  padding: 0;
+  background: transparent;
 }
 
 .not-found {
@@ -682,11 +854,13 @@ a {
   }
 
   .paper-item,
-  .post-item {
+  .post-item,
+  .internship-item {
     grid-template-columns: 1fr;
   }
 
-  .paper-index {
+  .paper-index,
+  .internship-meta {
     flex-direction: row;
   }
 
@@ -701,6 +875,10 @@ a {
 
   .post-arrow {
     display: none;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -745,6 +923,7 @@ a {
   }
 
   .section-list,
+  .about,
   .statement {
     padding: 5rem 0;
   }
@@ -787,8 +966,17 @@ a {
   }
 
   .paper-item,
-  .post-item {
+  .post-item,
+  .internship-item {
     padding: 2.5rem 0;
+  }
+
+  .article-header {
+    padding-bottom: 3.5rem;
+  }
+
+  .article-body {
+    margin-top: 3.5rem;
   }
 
   .project-card {

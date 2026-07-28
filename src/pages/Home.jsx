@@ -1,5 +1,6 @@
 import { ArrowDownRight, ArrowUpRight, MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import MarkdownContent from '../components/MarkdownContent.jsx'
 import { profile, sections } from '../data.js'
 
 export default function Home() {
@@ -14,8 +15,8 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">{profile.role}</p>
           <h1 id="hero-title">
-            研究问题，<br />
-            构建答案<span className="accent-dot">。</span>
+            {profile.heroLine1}<br />
+            {profile.heroLine2}<span className="accent-dot">。</span>
           </h1>
         </div>
 
@@ -25,6 +26,14 @@ export default function Home() {
             浏览内容 <ArrowDownRight size={18} />
           </a>
         </div>
+      </section>
+
+      <section className="about" aria-labelledby="about-title">
+        <div className="about-heading">
+          <p className="eyebrow">About / Profile</p>
+          <h2 id="about-title">个人介绍</h2>
+        </div>
+        <MarkdownContent className="about-copy">{profile.content}</MarkdownContent>
       </section>
 
       <section className="section-list" id="work" aria-labelledby="work-title">
@@ -57,8 +66,7 @@ export default function Home() {
       <section className="statement">
         <p className="eyebrow">Working principles</p>
         <blockquote>
-          “保持好奇，尊重证据，<br />
-          让复杂的事情变得清晰。”
+          “{profile.principle}”
         </blockquote>
       </section>
     </>

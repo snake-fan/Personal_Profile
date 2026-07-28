@@ -1,5 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader.jsx'
+import { formatDate } from '../lib/markdown.js'
 import { posts } from '../data.js'
 
 export default function Blog() {
@@ -14,9 +16,9 @@ export default function Blog() {
 
       <div className="post-list">
         {posts.map((post, index) => (
-          <article className="post-item" key={post.title}>
+          <Link className="post-item" to={`/blog/${post.slug}`} key={post.slug}>
             <div className="post-date">
-              <span>{post.date}</span>
+              <span>{formatDate(post.date)}</span>
               <span>{post.readTime}</span>
             </div>
             <div className="post-copy">
@@ -28,7 +30,7 @@ export default function Blog() {
               <ArrowUpRight size={24} strokeWidth={1.5} />
             </span>
             <span className="post-number">{String(index + 1).padStart(2, '0')}</span>
-          </article>
+          </Link>
         ))}
       </div>
     </section>

@@ -1,4 +1,5 @@
 import PageHeader from '../components/PageHeader.jsx'
+import MarkdownContent from '../components/MarkdownContent.jsx'
 import { papers } from '../data.js'
 
 export default function Papers() {
@@ -23,9 +24,16 @@ export default function Papers() {
               <h2>{paper.title}</h2>
               <p className="paper-authors">{paper.authors}</p>
               <p className="paper-venue">{paper.venue}</p>
-              <ul className="tag-list" aria-label="论文主题">
-                {paper.tags.map((tag) => <li key={tag}>{tag}</li>)}
-              </ul>
+              {paper.content && (
+                <MarkdownContent className="paper-description">
+                  {paper.content}
+                </MarkdownContent>
+              )}
+              {paper.tags?.length > 0 && (
+                <ul className="tag-list" aria-label="论文主题">
+                  {paper.tags.map((tag) => <li key={tag}>{tag}</li>)}
+                </ul>
+              )}
             </div>
           </article>
         ))}

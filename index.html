@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Snake Fan 的个人网站，记录论文、项目与技术写作。"
+      content="张逸凡的个人网站，记录论文、实习经历与技术写作。"
     />
     <meta name="theme-color" content="#f3f0e8" />
-    <title>Snake Fan — 研究、构建与写作</title>
+    <title>张逸凡 — 研究、构建与写作</title>
+    <script>
+      const redirect = sessionStorage.getItem('spa:redirect')
+      if (redirect) {
+        sessionStorage.removeItem('spa:redirect')
+        window.history.replaceState(null, '', redirect)
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
