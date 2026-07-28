@@ -5,6 +5,7 @@ readTime: 8 min
 category: 工程实践
 excerpt: 通过 docker 进行项目打包部署
 ---
+
 # 为什么要用 Docker 部署，Docker 到底是个什么东西
 
 首先明确一下 docker 的定位，他介于 虚拟机 和 真机部署 之间。
@@ -123,3 +124,30 @@ compose 会按照文件描述构建镜像、创建网络、创建容器，并启
     volumes:
       - postgres_data:/var/lib/postgresql/data
 ```
+
+# 总结
+
+整个 Docker 部署流程可以概括为：
+
+```
+Dockerfile
+    ↓ docker build
+Image
+    ↓ docker run
+Container
+```
+
+Dockerfile 是镜像的构建说明书，Image 是包含代码、运行时和依赖的只读模板，Container 则是基于镜像创建出来的运行实例。
+
+当项目中只有一个服务时，可以直接使用 `docker build` 和 `docker run` 完成部署；当项目包含前端、后端、数据库等多个模块时，则可以使用 Docker Compose，将各个服务的镜像、端口、环境变量、网络关系和数据卷统一写入 `compose.yaml`，再通过一条命令启动整套应用。
+
+```
+docker compose up -d --build
+```
+
+总而言之：
+- Dockerfile 决定镜像怎么构建
+- Image 决定容器里有什么
+- Container 是真正运行的服务实例
+- Compose 负责组织和管理多个容器
+- Volume 负责保存需要持久化的数据
